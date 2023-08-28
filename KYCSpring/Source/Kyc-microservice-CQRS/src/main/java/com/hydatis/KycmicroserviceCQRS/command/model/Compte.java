@@ -30,7 +30,9 @@ public class Compte {
 
     @OneToOne
     private Operation operationCredit;
-    @OneToOne(mappedBy = "compte")
-    private AgentPersonnePhysique titulaire;
+    @OneToOne(mappedBy = "compte",optional = true)
+    private AgentPersonnePhysique titulairePP;
+    @OneToOne(mappedBy = "compte",optional = true)
+    private AgentPersonneMorale titulairePM;
 
 }

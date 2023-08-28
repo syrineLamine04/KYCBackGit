@@ -18,11 +18,12 @@ public class KafkaTopicConfig {
     @Bean
     public KafkaAdmin kafkaAdmin(){
         Map<String,Object> config = new HashMap<>();
-        config.put(AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG,bootstrapServer);
+        config.put(AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG,"localhost:29092");
         return new KafkaAdmin(config);
     }
     @Bean
     public NewTopic createTopic(){
-        return new NewTopic("topic-name",5,(short)1);
+        return new NewTopic("agent.personne.physique.events",5,(short)1);
     }
+
 }

@@ -16,7 +16,7 @@ import java.util.Map;
 @Configuration
 public class ConfigProducer {
     @Value("${spring.kafka.bootstrap-servers}")
-    private String bootstrapServer;
+    private String bootstrapServer = "localhost:29092";
     @Value("${spring.kafka.schema-registry.url}")
     private String schemaRegistryUrl;
     @Value("${spring.kafka.application-id}")
@@ -29,9 +29,9 @@ public class ConfigProducer {
         props.put(ProducerConfig.CLIENT_ID_CONFIG,applicationId);
         props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,bootstrapServer);
         props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
-        props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, KafkaAvroSerializer.class.getName());
+        props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
         props.put("transaction.state.log.replication.factor",1);
-        props.put("schema.registry.url","");
+//        props.put("schema.registry.url","");
         return props;
     }
     @Bean
